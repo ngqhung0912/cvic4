@@ -156,89 +156,89 @@ def main(input_video_file: str, output_video_file: str) -> None:
         ret, frame = cap.read()
         # print(frame.shape)
         if ret:
-        #     if cv2.waitKey(28) & 0xFF == ord('q'):
-        #         break
-        #     # frame = cv2.resize(frame, (1280, 720))
-        #     if between(cap, 0, 500):
-        #         frame = add_text(frame, "Part 1")
-        #     if between(cap, 500, 2500):
-        #         frame = cv2.blur(frame, (10, 10))
-        #         frame = add_text(frame, "Blur")
-        #     if between(cap, 2500, 5000):
-        #         frame = cv2.filter2D(frame, -1, sharpen_kernel)
-        #         frame = add_text(frame, "Sharpen")
-        #     if between(cap, 5000, 7500):
-        #         frame = sobel(frame)
-        #         frame = add_text(frame, "Sobel")
-        #     if between(cap, 7500, 10000):
-        #         canny_param = [255, 255 / 3, 3]
-        #         frame = canny(frame, canny_param[0], canny_param[1], canny_param[2])
-        #         frame = add_text(frame, "Canny, threshold 1: {}, threshold 2: {}, aperture size: {}".
-        #                          format(canny_param[0], canny_param[1], canny_param[2]))
-        #     if between(cap, 10000, 12500):
-        #         frame = DFT(frame, frame_height, frame_width)
-        #         frame = add_text(frame, "Part 2: DFT Spectrum")
-        #     if between(cap, 12500, 15000):
-        #         frame = gaussian_low_pass_filter(frame, kernel_size_gaussian)
-        #         frame = iDFT(frame, frame_height, frame_width)
-        #         frame = add_text(frame, "Gaussian Low Pass Filter with kernel size {}".
-        #                          format(kernel_size_gaussian))
-        #     if between(cap, 15000, 17500):
-        #         frame = laplacian_high_pass_filter(frame, kernel_size_laplacian)
-        #         frame = iDFT(frame, frame_height, frame_width)
-        #         frame = add_text(frame, "Laplacian High Pass Filter with kernel size {}".
-        #                          format(kernel_size_laplacian))
-        #     if between(cap, 17500, 20000):
-        #         frame = band_pass_filter(frame, kernel_size_gaussian, kernel_size_laplacian)
-        #         frame = iDFT(frame, frame_height, frame_width)
-        #         frame = add_text(frame, "Band Pass Filter (Gaussian and Laplacian) with kernel size {} and {}".
-        #                          format(kernel_size_gaussian, kernel_size_laplacian))
-        #     if between(cap, 20000, 29000):
-        #         frame_sharpen = cv2.filter2D(frame, -1, sharpen_kernel)
-        #         frame_gray = cv2.cvtColor(frame_sharpen, cv2.COLOR_BGR2GRAY)
-        #         method = eval('cv2.TM_CCOEFF')
-        #         gray_template = cv2.imread('template.png', cv2.IMREAD_GRAYSCALE)
-        #         w, h = gray_template.shape[::-1]
-        #         res = cv2.matchTemplate(frame_gray, gray_template, method)
-        #         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-        #         top_left = max_loc
-        #         bottom_right = (top_left[0] + w, top_left[1] + h)
-        #         frame = cv2.rectangle(frame, top_left, bottom_right, 255, 2)
-        #         frame = add_text(frame, "Part 3: Template Matching")
-        #     if between(cap, 29000, 30000):
-        #         frame = add_text(frame, "Up Next: Optical Flow")
-        #     if between(cap, 30000, 40000):
-        #         if first_frame is None:
-        #             first_frame = frame
-        #             continue
-        #         else:
-        #             frame = optical_flow(first_frame, frame)
-        #             first_frame = frame
-        #
-        #     if between(cap, 40000, 42000):
-        #         frame = add_text(frame, "Part 4: Freestyle. Get Ready!")
-        #     if between(cap, 42000, 55000):
-        #         if first_frame is None:
-        #             first_frame = frame
-        #             continue
-        #         else:
-        #             frame = cv2.absdiff(first_frame, frame)
-        #             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        #             frame = cv2.threshold(frame, 25, 255, cv2.THRESH_BINARY)[1]
-        #             frame = cv2.dilate(frame, None, iterations=2)
-        #             contours, hierarchy = cv2.findContours(frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        #             for c in contours:
-        #                 if cv2.contourArea(c) < 500:
-        #                     continue
-        #                 (x, y, w, h) = cv2.boundingRect(c)
-        #                 frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        #     if between(cap, 55000, 60000):
-        #         frame = add_text(frame, "The end. Thank you for watching!", 960, 540, 2, 4)
+            if cv2.waitKey(28) & 0xFF == ord('q'):
+                break
+            # frame = cv2.resize(frame, (1280, 720))
+            if between(cap, 0, 500):
+                frame = add_text(frame, "Part 1")
+            if between(cap, 500, 2500):
+                frame = cv2.blur(frame, (10, 10))
+                frame = add_text(frame, "Blur")
+            if between(cap, 2500, 5000):
+                frame = cv2.filter2D(frame, -1, sharpen_kernel)
+                frame = add_text(frame, "Sharpen")
+            if between(cap, 5000, 7500):
+                frame = sobel(frame)
+                frame = add_text(frame, "Sobel")
+            if between(cap, 7500, 10000):
+                canny_param = [255, 255 / 3, 3]
+                frame = canny(frame, canny_param[0], canny_param[1], canny_param[2])
+                frame = add_text(frame, "Canny, threshold 1: {}, threshold 2: {}, aperture size: {}".
+                                 format(canny_param[0], canny_param[1], canny_param[2]))
+            if between(cap, 10000, 12500):
+                frame = DFT(frame, frame_height, frame_width)
+                frame = add_text(frame, "Part 2: DFT Spectrum")
+            if between(cap, 12500, 15000):
+                frame = gaussian_low_pass_filter(frame, kernel_size_gaussian)
+                frame = iDFT(frame, frame_height, frame_width)
+                frame = add_text(frame, "Gaussian Low Pass Filter with kernel size {}".
+                                 format(kernel_size_gaussian))
+            if between(cap, 15000, 17500):
+                frame = laplacian_high_pass_filter(frame, kernel_size_laplacian)
+                frame = iDFT(frame, frame_height, frame_width)
+                frame = add_text(frame, "Laplacian High Pass Filter with kernel size {}".
+                                 format(kernel_size_laplacian))
+            if between(cap, 17500, 20000):
+                frame = band_pass_filter(frame, kernel_size_gaussian, kernel_size_laplacian)
+                frame = iDFT(frame, frame_height, frame_width)
+                frame = add_text(frame, "Band Pass Filter (Gaussian and Laplacian) with kernel size {} and {}".
+                                 format(kernel_size_gaussian, kernel_size_laplacian))
+            if between(cap, 20000, 29000):
+                frame_sharpen = cv2.filter2D(frame, -1, sharpen_kernel)
+                frame_gray = cv2.cvtColor(frame_sharpen, cv2.COLOR_BGR2GRAY)
+                method = eval('cv2.TM_CCOEFF')
+                gray_template = cv2.imread('template.png', cv2.IMREAD_GRAYSCALE)
+                w, h = gray_template.shape[::-1]
+                res = cv2.matchTemplate(frame_gray, gray_template, method)
+                min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+                top_left = max_loc
+                bottom_right = (top_left[0] + w, top_left[1] + h)
+                frame = cv2.rectangle(frame, top_left, bottom_right, 255, 2)
+                frame = add_text(frame, "Part 3: Template Matching")
+            if between(cap, 29000, 30000):
+                frame = add_text(frame, "Up Next: Optical Flow")
+            if between(cap, 30000, 40000):
+                if first_frame is None:
+                    first_frame = frame
+                    continue
+                else:
+                    frame = optical_flow(first_frame, frame)
+                    first_frame = frame
+
+            if between(cap, 40000, 42000):
+                frame = add_text(frame, "Part 4: Freestyle. Get Ready!")
+            if between(cap, 42000, 55000):
+                if first_frame is None:
+                    first_frame = frame
+                    continue
+                else:
+                    frame = cv2.absdiff(first_frame, frame)
+                    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                    frame = cv2.threshold(frame, 25, 255, cv2.THRESH_BINARY)[1]
+                    frame = cv2.dilate(frame, None, iterations=2)
+                    contours, hierarchy = cv2.findContours(frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                    for c in contours:
+                        if cv2.contourArea(c) < 500:
+                            continue
+                        (x, y, w, h) = cv2.boundingRect(c)
+                        frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            if between(cap, 55000, 60000):
+                frame = add_text(frame, "The end. Thank you for watching!", 960, 540, 2, 4)
             # write frame that you processed to output
             out.write(frame)
 
             # (optional) display the resulting frame
-            # cv2.imshow('Frame', frame)
+            cv2.imshow('Frame', frame)
 
             # Press Q on keyboard to  exit
             if cv2.waitKey(25) & 0xFF == ord('q'):
