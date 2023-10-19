@@ -8,6 +8,7 @@ import cv2
 import sys
 import numpy as np
 import time
+
 ddepth = cv2.CV_16S
 kernel_size_gaussian = 5
 kernel_size_laplacian = 3
@@ -31,6 +32,7 @@ def sobel(frame):
 
 
 def canny(frame, threshold1, threshold2, apertureSize):
+    frame = frame.astype(np.uint8)
     return cv2.Canny(frame, threshold1, threshold2, apertureSize)
 
 
@@ -72,10 +74,9 @@ def DFT(frame, rows, cols):
     tmp = np.copy(q1)  # swap quadrant (Top-Right with Bottom-Left)
     magI[cx:cx + cx, 0:cy] = q2
     magI[0:cx, cy:cy + cy] = tmp
-    frame =  cv2.normalize(magI, magI, 0, 255, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
+    frame = cv2.normalize(magI, magI, 0, 255, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
     return frame
     # return cv2.normalize(magI, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
-
 
 
 def iDFT(frame, rows, cols):
