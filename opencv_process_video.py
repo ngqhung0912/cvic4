@@ -72,7 +72,10 @@ def DFT(frame, rows, cols):
     tmp = np.copy(q1)  # swap quadrant (Top-Right with Bottom-Left)
     magI[cx:cx + cx, 0:cy] = q2
     magI[0:cx, cy:cy + cy] = tmp
-    return cv2.normalize(magI, magI, 0, 1, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
+    # frame =  cv2.normalize(magI, magI, 0, 255, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
+    # return frame
+    return cv2.normalize(magI, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+
 
 
 def iDFT(frame, rows, cols):
@@ -175,7 +178,7 @@ def main(input_video_file: str, output_video_file: str) -> None:
                 frame = canny(frame, canny_param[0], canny_param[1], canny_param[2])
                 frame = add_text(frame, "Canny, threshold 1: {}, threshold 2: {}, aperture size: {}".
                                  format(canny_param[0], canny_param[1], canny_param[2]))
-            if between(cap, 10000, 12500):
+            if between(cap, 0000, 12500):
                 frame = DFT(frame, frame_height, frame_width)
                 frame = add_text(frame, "Part 2: DFT Spectrum")
             if between(cap, 12500, 15000):
@@ -234,7 +237,10 @@ def main(input_video_file: str, output_video_file: str) -> None:
             if between(cap, 55000, 60000):
                 frame = add_text(frame, "The end. Thank you for watching!", 960, 200, 2, 4)
             # write frame that you processed to output
-            frame = np.uint8(frame)
+            # print(frame)
+            # frame = cv2.normalize(frame, frame, 0, 255, cv2.NORM_MINMAX)
+            print(cap, frame.shape)
+            # frame = np.uint8(frame)
             out.write(frame)
 
             # (optional) display the resulting frame
