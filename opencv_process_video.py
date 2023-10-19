@@ -74,9 +74,9 @@ def DFT(frame, rows, cols):
     tmp = np.copy(q1)  # swap quadrant (Top-Right with Bottom-Left)
     magI[cx:cx + cx, 0:cy] = q2
     magI[0:cx, cy:cy + cy] = tmp
-    frame = cv2.normalize(magI, magI, 0, 1, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
-    return frame
-    # return cv2.normalize(magI, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
+    # frame = cv2.normalize(magI, magI, 0, 1, cv2.NORM_MINMAX)  # Transform the matrix with float values into a
+    # return frame
+    return cv2.normalize(magI, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
 
 
 def iDFT(frame, rows, cols):
