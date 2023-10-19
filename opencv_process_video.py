@@ -232,12 +232,13 @@ def main(input_video_file: str, output_video_file: str) -> None:
                         (x, y, w, h) = cv2.boundingRect(c)
                         frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
             if between(cap, 55000, 60000):
-                frame = add_text(frame, "The end. Thank you for watching!", 960, 540, 2, 4)
+                frame = add_text(frame, "The end. Thank you for watching!", 960, 200, 2, 4)
             # write frame that you processed to output
+            frame = np.uint8(frame)
             out.write(frame)
 
             # (optional) display the resulting frame
-            # cv2.imshow('Frame', frame)
+            cv2.imshow('Frame', frame)
 
             # Press Q on keyboard to  exit
             if cv2.waitKey(25) & 0xFF == ord('q'):
