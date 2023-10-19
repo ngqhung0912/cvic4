@@ -178,7 +178,7 @@ def main(input_video_file: str, output_video_file: str) -> None:
                 frame = canny(frame, canny_param[0], canny_param[1], canny_param[2])
                 frame = add_text(frame, "Canny, threshold 1: {}, threshold 2: {}, aperture size: {}".
                                  format(canny_param[0], canny_param[1], canny_param[2]))
-            if between(cap, 0000, 12500):
+            if between(cap, 10000, 12500):
                 frame = DFT(frame, frame_height, frame_width)
                 frame = add_text(frame, "Part 2: DFT Spectrum")
             if between(cap, 12500, 15000):
