@@ -148,7 +148,7 @@ def main(input_video_file: str, output_video_file: str) -> None:
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
     print("Video FPS: {}, width: {}, height: {}".format(fps, frame_width, frame_height))
-    fourcc = cv2.VideoWriter_fourcc(*'X264')  # note the lower case
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # note the lower case
     out = cv2.VideoWriter(output_video_file, fourcc, fps, (frame_height, frame_width), True)
     first_frame = None
     # while loop where the real work happens
@@ -214,7 +214,6 @@ def main(input_video_file: str, output_video_file: str) -> None:
                 else:
                     frame = optical_flow(first_frame, frame)
                     first_frame = frame
-
             if between(cap, 40000, 42000):
                 frame = add_text(frame, "Part 4: Freestyle. Get Ready!")
             if between(cap, 42000, 55000):
@@ -238,7 +237,7 @@ def main(input_video_file: str, output_video_file: str) -> None:
             out.write(frame)
 
             # (optional) display the resulting frame
-            cv2.imshow('Frame', frame)
+            # cv2.imshow('Frame', frame)
 
             # Press Q on keyboard to  exit
             if cv2.waitKey(25) & 0xFF == ord('q'):
